@@ -34,8 +34,13 @@ left_handle = pygame.Rect(LEFT_HANDLE_x, LEFT_HANDLE_y, HANDLE_WIDTH, HANDLE_HEI
 right_handle = pygame.Rect(RIGHT_HANDLE_x, RIGHT_HANDLE_y , HANDLE_WIDTH, HANDLE_HEIGHT)
 
 WIN = pygame.display.set_mode((WIDTH,HEIGHT))
+pygame.display.set_caption("Pong")
+
+# fonts used 
 SCORE_FONT = pygame.font.SysFont('Arial' , 40)
 WIN_FONT = pygame.font.SysFont('Arial' , 80)
+
+# importing sound
 Pong_hit = pygame.mixer.Sound(os.path.join('Assets','Pong33.mp3'))
 winnin_sound = pygame.mixer.Sound(os.path.join('Assets','Clapping.mp3')) 
 
@@ -52,6 +57,8 @@ def draw_window(left_handle, right_handle,X, Y, SCORE_1, SCORE_2):
     
     pygame.display.update()
 
+
+# Handles motion of the handle
 def handle_motion(key_pressed, left_handle, right_handle ):
    
     if key_pressed[pygame.K_w] and left_handle.y-10 >=0:
@@ -63,57 +70,6 @@ def handle_motion(key_pressed, left_handle, right_handle ):
     if key_pressed[pygame.K_DOWN] and right_handle.y + HANDLE_HEIGHT +10 <= HEIGHT:
         right_handle.y += VEL
 
-
-# def ball_motion(ball_direction , ball_direction_Y, X, Y ,right_handle , left_handle):
-#     if Y + BALL_RADIUS >= HEIGHT:
-#             Pong_hit.play()
-#             ball_direction_Y*=-1
-#             return ball_direction_Y
-#     elif Y + BALL_RADIUS-10 <=0:
-#             Pong_hit.play()
-#             ball_direction_Y*=-1
-#             return ball_direction_Y
-#         # contols the X direction of the ball
-#     if ball_direction >0:
-#         if X+ BALL_RADIUS > right_handle.x   and right_handle.y <Y< right_handle.y + HANDLE_HEIGHT/2:
-#             ball_direction*=-1
-#             ball_direction_Y= -4
-#             Pong_hit.play()
-#             return ball_direction_Y , ball_direction 
-
-#         if X+BALL_RADIUS > right_handle.x and right_handle.y+ HANDLE_HEIGHT/2  <Y< right_handle.y + HANDLE_HEIGHT:
-#             Pong_hit.play()
-#             ball_direction*=-1
-#             ball_direction_Y= 4
-#             return ball_direction_Y , ball_direction
-            
-#         if X+ BALL_RADIUS == right_handle.x and Y == right_handle.y + HANDLE_HEIGHT/2:
-#             Pong_hit.play()
-#             ball_direction*=-1
-#             return ball_direction_Y , ball_direction
-    
-#     if ball_direction <0:
-#         if X + BALL_RADIUS < left_handle.x + HANDLE_WIDTH +10 and left_handle.y <=Y<= left_handle.y + HANDLE_HEIGHT/2:
-#             Pong_hit.play()
-#             ball_direction*=-1
-#             ball_direction_Y= -4
-#             return ball_direction_Y , ball_direction
-       
-        
-        
-#         if X+ BALL_RADIUS < left_handle.x + HANDLE_WIDTH +10 and left_handle.y+HANDLE_HEIGHT/2  <=Y<= left_handle.y + HANDLE_HEIGHT:
-#             Pong_hit.play()
-#             ball_direction*=-1
-#             ball_direction_Y= 4
-#             return ball_direction_Y , ball_direction        
-        
-        
-#         if X+ BALL_RADIUS == left_handle.x+ HANDLE_WIDTH+10 and Y == left_handle.y + HANDLE_HEIGHT/2:
-#             Pong_hit.play()
-#             ball_direction*=-1
-#             return ball_direction_Y
-
-#     return ball_direction_Y , ball_direction
 
 
 def Winner(text):
